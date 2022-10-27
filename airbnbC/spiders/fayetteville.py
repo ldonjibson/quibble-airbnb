@@ -1,0 +1,10 @@
+import scrapy
+
+
+class FayettevilleSpider(scrapy.Spider):
+    name = 'fayetteville'
+    allowed_domains = ['www.airbnb.com']
+    start_urls = ['https://www.airbnb.com/s/Fayetteville--Arkansas--United-States/homes?tab_id=home_tab&refinement_paths%5B%5D=%2Fhomes&flexible_trip_lengths%5B%5D=one_week&price_filter_input_type=0&price_filter_num_nights=5&date_picker_type=flexible_dates&flexible_trip_dates%5B%5D=december&source=structured_search_input_header&search_type=autocomplete_click&query=Fayetteville%2C%20Arkansas&place_id=ChIJnT61L3tvyYcRz8i0_GnwGUU']
+
+    def parse(self, response):
+        pass
