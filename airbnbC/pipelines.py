@@ -20,7 +20,6 @@ class AirbnbcPipeline:
 class MongoDBPipeline:
     
     def __init__(self):
-        logging.warning(settings)
         quibble_db = pymongo.MongoClient(config("DATABASE_URL"))
         data_db = quibble_db.scraped_airbnb_data
         self.collection = data_db.data_collection
