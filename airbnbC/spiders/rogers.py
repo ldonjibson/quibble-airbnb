@@ -32,9 +32,9 @@ class RogersSpider(scrapy.Spider):
             yield scrapy.Request(
                 f"{self.base_domain}{url}", callback=self.parse_single_urls
             )
-        # next_page = response.css('a._1bfat5l::attr(href)').get()
-        # if next_page is not None:
-        #     yield response.follow(f"{self.base_domain}{next_page}", callback=self.parse)
+        next_page = response.css('a._1bfat5l::attr(href)').get()
+        if next_page is not None:
+            yield response.follow(f"{self.base_domain}{next_page}", callback=self.parse)
 
     def parse_single_urls(self, response):
         item = AirbnbcItem()
