@@ -23,10 +23,14 @@ class MongoDBPipeline:
         quibble_db = pymongo.MongoClient(config("DATABASE_URL"))
         data_db = quibble_db.scraped_airbnb_data
         self.collection = data_db.data_collection
+        self.items = []
         
 
     def process_item(self, item, spider):
         item_dict = ItemAdapter(item).asdict()
-        self.collection.insert_one(item_dict)
+        self.items.append(item_dict)
+        # self.collection.insert_one(item_dict)
         return item
 
+    def close_spider(self, spider):
+        self.collection.insert_many(self.items)
